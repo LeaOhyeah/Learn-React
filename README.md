@@ -32,7 +32,7 @@ Optimasi SEO sangat penting untuk meningkatkan visibilitas aplikasi web di mesin
 Untuk melihat catatan ini secara lokal, clone repository ini:
 
 ```bash
-git clone https://github.com/username-anda/catatan-dokumentasi-nextjs.git
+git clone https://github.com/LeaOhyeah/Learn-React.git
 ```
 ## Contributing
 Jika Anda ingin berkontribusi pada repository ini, silakan lakukan fork dan kirimkan pull request. Pastikan Anda mengikuti pedoman berikut:
