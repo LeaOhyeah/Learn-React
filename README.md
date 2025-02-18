@@ -1,6 +1,6 @@
 # Catatan Dokumentasi Next.js
 
-Selamat datang di repository Catatan Dokumentasi Next.js! Repository ini berisi ringkasan dan penjelasan mendalam mengenai Next.js, yang dibagi menjadi 16 chapter. Saat ini, baru tersedia 4 chapter pertama yang dapat Anda pelajari:
+Selamat datang di repository Catatan Dokumentasi Next.js! Repository ini berisi ringkasan dan penjelasan mendalam mengenai Next.js, yang dibagi menjadi 4 chapter.
 
 ## Daftar Chapter
 
@@ -34,11 +34,11 @@ Untuk melihat catatan ini secara lokal, clone repository ini:
 ```bash
 git clone https://github.com/LeaOhyeah/Learn-React.git
 ```
-## Contributing
+## Berkontribusi
 Jika Anda ingin berkontribusi pada repository ini, silakan lakukan fork dan kirimkan pull request. Pastikan Anda mengikuti pedoman berikut:
 - Buat branch baru untuk perubahan Anda.
 - Pastikan kode Anda tidak menimbulkan error atau masalah lainnya.
 - Berikan penjelasan yang jelas pada pull request Anda.
 
-## License
+## Lisensi
 Project ini dilisensikan di bawah **MIT License**. Lihat file [LICENSE](LICENSE) untuk informasi lebih lanjut.
