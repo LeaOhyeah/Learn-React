@@ -1,0 +1,15 @@
+Untuk memahami bagaimana React bekerja, pertama-tama kita membutuhkan pemahaman dasar bagaimana browser menafsirkan kode (atau rendering) untuk 
+membuat UI. Ketika user mengunjungi sebuah halaman web, server akan mengirimkan file HTML ke browser. Kemudian web browser membaca file HTML dan 
+membangun Document Object Model (DOM) dari HTML tersebut.
+
+Apa itu DOM?
+DOM adalah representasi objek dari halaman web yang dibuat berdasarkan HTML. DOM memiliki struktur seperti pohon dengan hubungan induk (parent) 
+dan anak (child), memungkinkan interaksi dinamis dengan halaman. Anda bisa menggunakan JavaScript untuk menanggapi interaksi pengguna, seperti 
+mengubah teks tombol saat diklik atau menyembunyikan elemen saat diperlukan. Manipulasi DOM memungkinkan Anda tidak hanya menargetkan elemen 
+tertentu, tetapi juga mengubah gaya dan kontennya.
+
+Summary
+React bekerja dengan memanfaatkan DOM, yang merupakan representasi objek dari halaman web berdasarkan HTML. DOM memiliki struktur pohon dengan 
+hubungan parent-child, memungkinkan interaksi dinamis.
+JavaScript dapat digunakan untuk menangani event pengguna dan memanipulasi DOM, seperti mengubah teks tombol atau menyembunyikan elemen. Dengan 
+manipulasi DOM, elemen dapat dipilih, diperbarui, ditambahkan, atau dihapus, serta mengubah gaya dan kontennya sesuai kebutuhan.

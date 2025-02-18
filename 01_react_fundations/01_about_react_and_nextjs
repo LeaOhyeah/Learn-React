@@ -1,0 +1,51 @@
+Next.js adalah kerangka kerja React yang fleksibel yang memberikan anda blok-blok bangunan untuk membangun full-stack aplikasi web dengan cepat
+Tapi apa sebenarnya yang kita maksud dengan ini? Mari kita luangkan waktu untuk menjelaskan apa yang React dan Next.js dan bagaimana mereka dapat 
+membantu Anda membangun aplikasi web.
+
+Blok Bangunan Aplikasi Web
+Ada beberapa hal yang perlu Anda pertimbangkan saat membangun aplikasi modern, seperti;
+    Antarmuka Pengguna      -> bagaimana pengguna akan mengonsumsi dan berinteraksi dengan aplikasi Anda.
+    Routing                 -> bagaimana pengguna berpindah antar bagian dalam aplikasi Anda.
+    Pengambilan Data        -> di mana data Anda berada dan bagaimana cara mendapatkannya.
+    Rendering               -> kapan dan di mana Anda merender konten statis atau dinamis.
+    Integrasi               -> layanan pihak ketiga apa yang Anda gunakan (untuk CMS, autentikasi, pembayaran, dll.) dan bagaimana menghubungkannya.
+    Infrastruktur           -> di mana Anda menerapkan, menyimpan, dan menjalankan kode aplikasi Anda (serverless, CDN, edge, dll.).
+    Performa                -> bagaimana mengoptimalkan aplikasi Anda untuk pengguna akhir.
+    Skalabilitas            -> bagaimana aplikasi Anda beradaptasi saat tim, data, dan lalu lintas meningkat.
+    Pengalaman Pengembang   -> pengalaman tim Anda dalam membangun dan memelihara aplikasi.
+
+Untuk setiap bagian aplikasi Anda, Anda perlu memutuskan apakah akan membangun solusi sendiri atau menggunakan alat lain, seperti packages, 
+libraries, dan frameworks.
+
+Apa itu React?
+React adalah pustaka JavaScript untuk membangun antarmuka pengguna yang interaktif .
+Yang kami maksud dengan antarmuka pengguna (UI) adalah elemen yang dilihat dan digunakan oleh pengguna untuk berinteraksi di layar.
+Dengan pustaka, yang kami maksud adalah React menyediakan fungsi-fungsi bermanfaat (API) untuk membangun UI, tetapi menyerahkan kepada pengembang
+di mana menggunakan fungsi-fungsi tersebut dalam aplikasi mereka.
+Salah satu faktor keberhasilan React adalah sifatnya yang relatif tidak memiliki pendapat tentang aspek lain dalam membangun aplikasi. Hal ini
+menghasilkan ekosistem alat dan solusi pihak ketiga yang berkembang pesat, termasuk Next.js.
+Namun, hal ini juga berarti bahwa membangun aplikasi React yang lengkap dari awal memerlukan usaha. Pengembang perlu meluangkan waktu untuk 
+mengonfigurasi alat dan menemukan kembali solusi untuk persyaratan aplikasi umum.
+
+
+Apa itu Next.js?
+Next.js adalah kerangka kerja / framework React yang memberi Anda blok penyusun untuk membuat aplikasi web.
+Yang kami maksud dengan kerangka kerja adalah Next.js menangani perkakas dan konfigurasi yang dibutuhkan untuk React, dan menyediakan struktur,
+fitur, serta pengoptimalan tambahan untuk aplikasi Anda.
+Anda dapat menggunakan React untuk membangun UI Anda, lalu secara bertahap mengadopsi fitur Next.js untuk menyelesaikan persyaratan aplikasi
+umum seperti perutean, pengambilan data, dan penyimpanan sementara - semuanya sambil meningkatkan pengalaman pengembang dan pengguna akhir.
+Baik Anda pengembang individu atau bagian dari tim yang lebih besar, Anda dapat menggunakan React dan Next.js untuk membangun aplikasi web yang
+sepenuhnya interaktif, sangat dinamis, dan berperforma tinggi.
+
+
+Summary
+Ada banyak hal yang perlu dipertimbangkan dalam pembuatan aplikasi web, seperti: Routing hingga Pengalaman Pengembang.
+
+React adalah pustaka JavaScript untuk membangun UI. Namun, React tidak menentukan bagaimana aplikasi harus dibangun, sehingga pengembang perlu 
+mengonfigurasi banyak hal sendiri. Ini artinya membangun aplikasi yang lengkap dengan React membutuhkan konfigurasi dan usaha yang banyak.
+
+Next.js adalah kerangka kerja React yang menyediakan struktur dan konfigurasi bawaan, sehingga pengembang dapat lebih fokus pada pengembangan
+fitur aplikasi. Dengan Next.js anda dapat membangun UI dengan React dan mengadopsi fitur Next.js untuk menyelesaikan persyaratan aplikasi umum 
+seperti Routing hingga Pengalaman Pengembang.
+
+

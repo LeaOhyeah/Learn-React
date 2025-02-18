@@ -1,0 +1,69 @@
+<!-- kali ini kita akan membangun web dengan JS dan DOM untuk menambahkan tag h1 -->
+
+<html>
+  <body>
+    <div id="app"></div>
+
+    <script type="text/javascript">
+      // select div element
+      const app = document.getElementById("app");
+
+      // create a new h1 element
+      const header = document.createElement('h1');
+
+      // create a text node for the h1 element
+      const text = "Hello DOM.";
+      const headerContent = document.createTextNode(text);
+
+      // append the text to the h1 element
+      header.appendChild(headerContent);
+ 
+      // place the h1 element inside the div
+      app.appendChild(header);
+    </script>
+  </body>
+</html>
+
+
+<!-- 
+Perbedaan HTML dan DOM
+Jika Anda melihat elemen DOM di dalam alat pengembang (inspect) browser Anda, Anda akan melihat DOM menyertakan <h1>elemen tersebut. 
+DOM halaman berbeda dari kode sumber - atau dengan kata lain, file HTML asli yang Anda buat.
+
+Hal ini karena HTML mewakili konten halaman awal , sedangkan DOM mewakili konten halaman yang diperbarui yang diubah oleh kode JS yang Anda 
+tulis. Memperbarui DOM dengan JavaScript biasa sangatlah ampuh tetapi bertele-tele. Anda telah menulis banyak kode ini untuk menambahkan <h1>
+berisi 'Hello DOM'
+
+Seiring berkembangnya ukuran aplikasi atau tim, membangun aplikasi dengan cara ini dapat menjadi semakin menantang.
+
+Dengan pendekatan ini, pengembang menghabiskan banyak waktu menulis instruksi untuk memberi tahu komputer bagaimana seharusnya komputer
+melakukan sesuatu. Namun, bukankah lebih baik jika Anda menjelaskan apa yang ingin Anda tampilkan dan membiarkan komputer mencari tahu cara 
+memperbarui DOM?
+
+Pemrograman Imperatif vs. Pemrograman Deklaratif
+Kode di atas adalah contoh yang baik dari pemrograman imperatif . Anda menulis langkah-langkah tentang cara memperbarui antarmuka pengguna. 
+Namun, dalam hal membangun antarmuka pengguna, pendekatan deklaratif sering kali lebih disukai karena dapat mempercepat proses pengembangan. 
+Daripada harus menulis metode DOM, akan sangat membantu jika pengembang dapat mendeklarasikan apa yang ingin mereka tampilkan (dalam hal ini, 
+h1tag dengan beberapa teks).
+
+Dengan kata lain, pemrograman imperatif seperti memberi koki petunjuk langkah demi langkah tentang cara membuat pizza. Pemrograman deklaratif 
+seperti memesan pizza tanpa mempedulikan langkah-langkah yang diperlukan untuk membuat pizza.
+
+React adalah pustaka deklaratif populer yang dapat Anda gunakan untuk membangun antarmuka pengguna. Sebagai pengembang, Anda dapat memberi tahu
+React apa yang Anda inginkan terjadi pada antarmuka pengguna, dan React akan mencari tahu langkah-langkah tentang cara memperbarui DOM atas nama
+Anda.
+ -->
+
+
+<!-- 
+Summary
+HTML & DOM adalah dua hal yang berbeda: HTML mewakili struktur awal halaman, sedangkan DOM adalah representasi yang dapat diperbarui melalui JS.
+Manipulasi DOM dengan JavaScript biasa menggunakan pendekatan imperatif, di mana pengembang harus menuliskan langkah-langkah secara detail.
+Namun, pendekatan ini menjadi semakin sulit ketika aplikasi berkembang.
+
+Sebaliknya, pemrograman deklaratif, seperti yang digunakan dalam React, memungkinkan pengembang hanya mendefinisikan apa yang harus ditampilkan
+tanpa perlu menentukan bagaimana memperbarui DOM. Hal ini membuat proses pengembangan lebih efisien dan mudah dikelola.
+
+React sebagai pustaka deklaratif membantu pengembang membangun antarmuka pengguna dengan lebih cepat dan terstruktur, tanpa harus menangani 
+manipulasi DOM secara manual. 
+-->
