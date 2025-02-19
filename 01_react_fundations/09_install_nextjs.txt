@@ -1,0 +1,78 @@
+Saat Anda menggunakan Next.js di proyek Anda, Anda tidak perlu memuat skrip reactdan react-domdari unpkg.com
+lagi. Sebagai gantinya, Anda dapat menginstal paket-paket ini secara lokal menggunakan npmatau pengelola paket pilihan Anda.
+
+Untuk melakukannya, buat file baru di direktori yang sama dengan index.html Anda, dengan nama package.json dengan objek kosong {}.
+Di terminal Anda, jalankan perintah berikut di root proyek Anda:
+    npm install react@latest react-dom@latest next@latest
+
+Setelah instalasi selesai, Anda akan dapat melihat dependensi proyek Anda tercantum di dalam package.json Anda:
+{
+  "dependencies": {
+    "next": "^14.0.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
+
+Catatan: veris akan disesuaikan dengan versi terbaru, jika Anda meng clone repo ini maka hapus package.json nya terlebih dahulu dan gunakan milik 
+Anda sendiri dengan menjalankan perintah instalasi di root proyek Anda
+
+Anda juga akan melihat berkas baru bernama package-lock.jsonfile yang berisi informasi terperinci tentang versi pasti setiap paket.
+
+
+### Membuat halaman pertama Anda ###
+sekarang anda dapat membuat halaman dengan React sepenuhnya, buat folder /app dan buat file page.jsx / ,js yang berasal dari index.html sebelumnya
+Anda dapat menghapus kode berikut:
+    Tag <html>dan <body>.
+    Elemen <div> dengan id app​
+    skrip react & react-dom karena Anda telah menginstalnya dengan NPM.
+    Skrip Babel karena Next.js mempunyai kompiler yang mengubah JSX menjadi JavaScript valid yang dapat dipahami oleh browser.
+    Labelnya <script type="text/jsx">
+    Dan metode document.getElementById().ReactDom.createRoot()
+    Bagian React. dari React.useState(0)
+Setelah menghapus baris di atas, tambahkan impor berikut ke bagian atas berkas Anda:
+  import { useState } from 'react'; 
+Lalu tambahkan export default ke komponen <HomePage> untuk membantu Next.js membedakan komponen mana yang akan dirender sebagai komponen utama 
+halaman.
+
+export default function HomePage() {
+  //..
+}
+
+### Running the development server ###
+Selanjutnya, mari jalankan server pengembangan Anda sehingga Anda dapat melihat perubahan pada halaman baru Anda saat mengembangkannya. 
+Tambahkan skrip "next dev" ke package.json
+{
+  "scripts": {
+    "dev": "next dev"
+  },
+  "dependencies": {
+    "next": "^15.1.7",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
+
+Periksa apa yang terjadi dengan menjalankannya npm run dev di terminal Anda. Anda akan melihat dua hal:
+1.  Error:   × You're importing a component that needs `useState`. This React hook only works in a client component....
+    Hal ini karena Next.js menggunakan React Server Components, sebuah fitur baru yang memungkinkan React untuk dirender di server. Server 
+    Components tidak mendukung useState, jadi Anda perlu menggunakan Client Component sebagai gantinya.
+    Pada bab berikutnya, kita akan membahas perbedaan utama antara Komponen Server dan Klien dan memperbaiki kesalahan ini.
+
+2.  File baru bernama layout.jstelah dibuat secara otomatis di dalam appfolder tersebut. Ini adalah tata letak utama aplikasi Anda. Anda dapat 
+    menggunakannya untuk menambahkan elemen UI yang dibagikan di semua halaman (misalnya navigasi, footer, dll.).
+
+Catatan: jika Anda meng clone repo ini maka hapus layouts.js nya terlebih dahulu dan gunakan milik 
+Anda sendiri dengan menjalankan perintah npm run dev
+
+
+
+
+
+Summary
+Next.js tidak butuh React dari CDN, jadi cukup instal react, react-dom, dan next via NPM.
+Tidak perlu tag <html>, <body>, atau document.getElementById, karena Next.js menangani itu secara otomatis.
+JSX langsung dikompilasi oleh Next.js, jadi tidak perlu Babel atau <script type="text/jsx">.
+Tambahkan script "dev": "next dev" di package.json, lalu jalankan npm run dev untuk melihat hasilnya.
+Error untuk komponen yang pakai useState, karena Next.js pakai Server Components secara default.
+Next.js bikin kode lebih bersih dan efisien dibandingkan React standalone.

@@ -1,0 +1,19 @@
+Sejauh ini, kita telah mempelajari cara memulai React. 
+Kode akhir -> /index.html
+Dalam beberapa bab terakhir, Anda telah diperkenalkan pada tiga konsep penting React: components , props , dan state. 
+Memiliki dasar yang kuat dalam hal ini akan membantu Anda memulai membangun aplikasi React.
+
+Jika ingin mempelajari React, cara terbaik untuk mempelajarinya adalah dengan membangunnya. Anda dapat mengadopsi React secara bertahap dengan 
+menggunakan <script> apa yang telah Anda pelajari sejauh ini untuk menambahkan komponen kecil ke situs web yang sudah ada. Namun, banyak pengembang 
+telah menemukan bahwa pengalaman pengguna dan pengembang yang dimungkinkan oleh React cukup berharga untuk langsung terjun dan menulis seluruh 
+aplikasi frontend mereka dalam React.
+
+
+Dari React ke Next.js
+Meskipun React unggul dalam membangun UI, dibutuhkan beberapa pekerjaan untuk membangun UI tersebut secara independen menjadi aplikasi yang 
+berfungsi penuh dan dapat diskalakan. Ada juga fitur React yang lebih baru, seperti Komponen Server dan Klien, yang memerlukan kerangka kerja. 
+Kabar baiknya adalah Next.js menangani sebagian besar pengaturan dan konfigurasi serta memiliki fitur tambahan untuk membantu Anda membangun 
+aplikasi React.
+
+Selanjutnya, kita akan memindahkan contoh dari React ke Next.js, membahas cara kerja Next.js, dan memperkenalkan Anda pada perbedaan antara 
+Komponen Server dan Klien.
