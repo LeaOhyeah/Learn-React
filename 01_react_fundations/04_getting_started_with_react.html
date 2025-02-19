@@ -1,0 +1,71 @@
+<!-- 
+Untuk menggunakan React di proyek yang baru Anda buat, muat dua skrip React dari situs web eksternal bernama unpkg.com:
+    react adalah pustaka inti React.
+    react-dom memungkinkan React berinteraksi dengan DOM.
+    
+Daripada memanipulasi DOM secara langsung dengan JavaScript biasa, hapus metode DOM yang telah Anda tambahkan sebelumnya, dan tambahkan
+ReactDOM.createRoot(); metode untuk menargetkan elemen DOM tertentu dan membuat root untuk menampilkan Komponen React Anda. 
+Kemudian, tambahkan root.render(); untuk merender kode React Anda ke DOM.
+
+Ini akan memberitahu React untuk merender <h1> di dalam elemen kita #app.
+-->
+
+<html>
+  <body>
+    <div id="app"></div>
+    <div id="appReact"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- <script type="text/javascript"> -->
+    <script type="text/jsx">
+      const appReact = document.getElementById("appReact");
+      const root = ReactDOM.createRoot(appReact);
+      root.render(<h1>Hello React.</h1>);
+
+      // Jika Anda mencoba menjalankan kode ini di browser, Anda akan mendapatkan kesalahan sintaksis:
+      // Uncaught SyntaxError: expected expression, got '<'
+      // Hal ini karena <h1>...</h1> JS tidak valid. Bagian kode ini adalah JSX .
+
+      // Apa itu JSX?
+
+      // JSX adalah ekstensi sintaksis untuk JS yang memungkinkan Anda mendeskripsikan UI Anda dalam sintaksis mirip HTML yang sudah dikenal .
+      // Hal yang menarik tentang JSX adalah selain mengikuti tiga aturan JSX, Anda tidak perlu mempelajari simbol atau sintaksis baru di luar
+      // HTML dan JavaScript. Namun browser tidak memahami JSX secara langsung, jadi Anda memerlukan kompiler JavaScript, seperti Babel,
+      //  untuk mengubah kode JSX Anda menjadi JavaScript biasa.
+
+      // Menambahkan Babel
+      // Selain itu, Anda perlu memberi tahu Babel kode apa yang akan diubah dengan mengubah jenis skrip menjadi type=text/jsx.
+
+      // Tiga aturan JSX
+      // 1. mengembalikan satu root element
+      // 2. menutup semua tag
+      // 3. menggunakan camelCase sebagian besar hal
+      // cara mudah merubah atribut ke JSX https://transform.tools/html-to-jsx
+    </script>
+    
+    <script type="text/javascript">
+        const app = document.getElementById('app');
+        const header = document.createElement('h1');
+        const text = 'Hello DOM.';
+        const headerContent = document.createTextNode(text);
+        header.appendChild(headerContent);
+        app.appendChild(header);
+    </script>
+  </body>
+</html>
+
+<!-- 
+Summary
+Meskipun Anda dapat mempelajari JS dan React secara bersamaan, memahami JS dapat membuat proses pembelajaran React lebih mudah.
+Untuk menggunakan React dalam proyek baru, Anda perlu memuat React dan ReactDOM dari unpkg.com. React bertindak sebagai pustaka inti, 
+sementara ReactDOM memungkinkan interaksi dengan DOM.
+
+Alih-alih memanipulasi DOM secara langsung dengan JS, Anda bisa menggunakan ReactDOM.createRoot() untuk membuat root dan menggunakan 
+root.render() untuk merender elemen React ke dalam DOM.
+
+React menggunakan JSX, sebuah ekstensi sintaksis JS yang memungkinkan Anda menulis kode mirip HTML dalam JS. Karena browser 
+tidak memahami JSX secara langsung, Anda memerlukan Babel untuk mengubah (meng compile) JSX menjadi JS biasa.
+ -->

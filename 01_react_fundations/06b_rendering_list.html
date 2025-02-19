@@ -1,0 +1,84 @@
+<!-- 
+Merupakan hal yang umum untuk memiliki data yang perlu Anda tampilkan sebagai list. Anda dapat menggunakan array untuk memanipulasi data 
+Anda dan menghasilkan elemen UI yang memiliki gaya yang identik tetapi berisi informasi yang berbeda.
+Anda kemudian dapat menggunakan array.map() untuk melakukan perulangan dan menggunakan arrow function untuk memetakan nama ke item list:
+
+-->
+
+<html>
+  <body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- <script type="text/javascript"> -->
+    <script type="text/jsx">
+      const app = document.getElementById("app");
+
+      function HomePage() {
+        const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+        const users = [
+          {
+            id: 1,
+            name: "Lea"
+          },
+          {
+            id: 2,
+            name: "Leo"
+          },
+        ];
+
+        return (
+          <div>
+            <ul>
+              {names.map((name) => (
+                <li>{name}</li>
+              ))}
+            </ul>
+            <br/>
+            <ul>
+              {users.map((user) => (
+                <li key={user.id}>{user.name}</li>
+              ))}
+            </ul>
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(app);
+      root.render(<HomePage />);
+    </script>
+  </body>
+</html>
+
+<!-- 
+Perhatikan bagaimana Anda menggunakan kurung kurawal untuk membedakan antara "JavaScript" dan "JSX".
+<ul>
+  {users.map((user) => (
+    <li key={user.id}>{user.name}</li>
+  ))}
+</ul>
+
+map(), user.id, dan user.name adalah bagian dari JavaScript.
+<ul>, <li>, dan strukturnya adalah JSX.
+Jadi, kurung kurawal {} digunakan untuk menyisipkan ekspresi JavaScript ke dalam JSX agar bisa dinamis.
+
+Jika Anda menjalankan kode list names, React akan memberi kita peringatan tentang keyproperti yang hilang. Hal ini karena React memerlukan 
+sesuatu untuk mengidentifikasi item dalam array secara unik sehingga React mengetahui elemen mana yang harus diperbarui dalam DOM.
+
+Anda dapat menggunakan nama tersebut untuk saat ini karena nama tersebut saat ini unik, tetapi disarankan untuk menggunakan sesuatu yang 
+dijamin unik, seperti ID users.
+
+-->
+
+<!-- 
+Summary
+List dalam React dapat dibuat dengan melakukan iterasi pada array menggunakan .map() untuk menghasilkan elemen JSX secara dinamis.
+Kurung kurawal {} dalam JSX digunakan untuk menyisipkan ekspresi JavaScript, seperti map(), ke dalam elemen JSX.
+
+React membutuhkan key unik untuk setiap item dalam daftar yang dirender, agar dapat mengidentifikasi elemen mana yang perlu diperbarui 
+dalam DOM. Gunakan properti key yang unik, seperti id, untuk menghindari peringatan dari React dan memastikan efisiensi dalam rendering 
+ulang elemen daftar.
+-->

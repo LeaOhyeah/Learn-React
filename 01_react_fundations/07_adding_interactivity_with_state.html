@@ -1,0 +1,103 @@
+<!-- 
+State and event handler 
+Mari jelajahi bagaimana React membantu kita menambahkan interaktivitas dengan state dan event handler.
+Sebagai contoh, mari kita buat tombol "Like" di dalam HomePage komponen. Pertama, tambahkan elemen tombol di dalam return():
+
+Listening to events
+Untuk membuat tombol melakukan sesuatu saat diklik, Anda dapat menggunakan onClick
+  <button onClick={}>Like</button>
+Dalam React, nama event ditulis dalam format camelCased. onClickEvent adalah salah satu dari sekian banyak event yang dapat Anda gunakan 
+untuk merespons interaksi pengguna. Misalnya, Anda dapat menggunakan onChangeuntuk kolom input atau onSubmituntuk formulir.
+
+Handling events
+Anda dapat menentukan fungsi untuk "menangani" / "handle" peristiwa kapan pun peristiwa itu dipicu. Buat fungsi sebelum pernyataan return 
+yang disebut handleClick(). Kemudian, Anda dapat memanggil handleClickfungsi tersebut saat onClickperistiwa dipicu:
+  function handleClick() {
+    console.log("increment like count")
+  }
+  //...
+  <button onClick={handleClick}>Like</button>
+
+State and hooks
+React memiliki sekumpulan fungsi yang disebut hooks
+Hook memungkinkan Anda menambahkan logika tambahan seperti status ke komponen Anda. Anda dapat menganggap status sebagai informasi apa pun 
+di UI Anda yang berubah seiring waktu, biasanya dipicu oleh interaksi pengguna.
+Anda dapat menggunakan state untuk menyimpan dan menambah jumlah kali pengguna mengklik tombol "ike". Faktanya, React Hook yang digunakan 
+untuk mengelola state disebut: useState()
+
+Tambahkan useState()ke proyek Anda. Ini mengembalikan array, dan Anda dapat mengakses dan menggunakan nilai array tersebut di dalam 
+komponen Anda menggunakan destrukturisasi array. Item pertama dalam array adalah status value, yang dapat Anda beri nama apa pun. 
+Sebaiknya beri nama yang deskriptif. Item kedua dalam array adalah fungsi untuk updatenilai tersebut. Anda dapat memberi nama fungsi 
+pembaruan apa pun, tetapi biasanya diberi awalan dengan setdiikuti oleh nama variabel status yang Anda perbarui:
+  const [likes, setLikes] = React.useState();
+Anda juga dapat menginisialisasi nilai awal likes state Anda ke 0:
+  const [likes, setLikes] = React.useState(0);
+
+Kemudian, Anda dapat memeriksa apakah nilai awal berfungsi dengan menggunakan variabel di dalam komponen Anda.
+  <button onClick={handleClick}>Like({likes})</button>
+
+Terakhir, Anda dapat memanggil fungsi setLikes di HomePage komponen Anda, mari tambahkan ke dalam handleClick()
+  function handleClick() {
+    setLikes(likes + 1);
+  }
+
+-->
+
+<html>
+  <body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- <script type="text/javascript"> -->
+    <script type="text/jsx">
+      const app = document.getElementById("app");
+
+      function HomePage() {
+        const [likes, setLikes] = React.useState(0);
+
+        function handleClick() {
+          setLikes(likes + 1);
+        }
+
+        return (
+          <div>
+            <button onClick={handleClick}>Like ({likes})</button>
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(app);
+      root.render(<HomePage />);
+    </script>
+  </body>
+</html>
+
+<!-- 
+Mengklik tombol sekarang akan memanggil handleClick, yang memanggil setLikes pembaruan status dengan suka saat ini + 1.
+
+    Catatan : Tidak seperti props yang diteruskan ke komponen sebagai parameter fungsi pertama, state dimulai dan disimpan dalam suatu 
+    komponen. Anda dapat meneruskan informasi state ke komponen turunan sebagai props, tetapi logika untuk memperbarui state harus 
+    disimpan dalam komponen tempat state awalnya dibuat.
+
+Ini hanyalah pengantar tentang state, dan masih banyak lagi yang dapat Anda pelajari tentang pengelolaan state dan aliran data dalam 
+aplikasi React Anda. Untuk mempelajari lebih lanjut, kami sarankan Anda membaca 
+  https://react.dev/learn/adding-interactivity
+  https://react.dev/learn/managing-state
+ -->
+  
+
+<!-- 
+Summary
+Props dalam React memungkinkan komponen menerima data dari komponen induk dan menampilkannya secara dinamis. 
+Jika props tidak diberikan, bisa menggunakan nilai default.
+
+
+State dalam React digunakan untuk menyimpan dan memperbarui data yang berubah seiring waktu, seperti jumlah "like" dalam contoh ini.
+Event handler (onClick) digunakan untuk menangani interaksi pengguna, seperti memperbarui state ketika tombol ditekan.
+React useState hook memungkinkan komponen menyimpan state lokal dan memperbaruinya tanpa harus merender ulang seluruh aplikasi.
+
+State hanya bisa diperbarui dalam komponen tempat ia dideklarasikan, tetapi nilainya dapat diteruskan ke komponen lain sebagai props.
+-->

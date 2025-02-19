@@ -1,0 +1,72 @@
+<!-- 
+Terdapat 3 konsep utama React yang harus anda pahami untuk mulai membangun aplikasi dengan React, yaitu:
+    Components
+    Props
+    State
+
+Pada bab berikutnya kita akan membahas konsep-konsep ini dan sumber daya tempat anda dapat terus mempelajarinya. Setelah memahami 
+konsep-konsep ini, selanjutnya adalah menginstal Next.js dan menggunakan fitur React yang lebih baru seperti Komponen Server dan Klien.
+
+Komponen
+Antarmuka pengguna dapat dipecah menjadi blok bangunan yang lebih kecil yang disebut komponen.
+Komponen memungkinkan Anda membuat potongan kode yang mandiri dan dapat digunakan kembali. Jika Anda menganggap komponen sebagai balok LEGO,
+Anda dapat mengambil balok-balok tersebut dan menggabungkannya untuk membentuk struktur yang lebih besar. Jika Anda perlu memperbarui bagian UI, 
+Anda dapat memperbarui komponen atau balok tertentu.
+    "misalnya card dapat dipecah menjadi gambar, teks, dan tombol"
+Modularitas ini memungkinkan kode Anda lebih mudah dipelihara seiring pertumbuhannya karena Anda dapat menambahkan, memperbarui, dan menghapus 
+komponen tanpa menyentuh bagian aplikasi lainnya. Hal yang menarik tentang komponen React adalah bahwa komponen tersebut hanyalah JavaScript.
+
+Komponen bersarang
+Aplikasi biasanya menyertakan lebih banyak konten daripada satu komponen. Anda dapat menumpuk komponen React di dalam satu sama lain seperti Anda menumpuk elemen HTML biasa.
+    "misalnya card adalah sebuah komponen yang terdiri dari komponen gambar, teks, dan tombol"
+-->
+
+<html>
+  <body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- <script type="text/javascript"> -->
+    <script type="text/jsx">
+      const app = document.getElementById("app");
+
+      // membuat komponen
+      // komponen React harus ditulis dengan huruf kapital untuk membedakan dari HTML dan JS biasa
+      // pada akhirnya komponen React adalah function JS yang mengembalikan JSX
+      function Header() {
+        return <h1>Hello Header Component.</h1>;
+      }
+
+      function Body() {
+        return <p>Hello Body Component.</p>;
+      }
+      
+
+      // membuat komponen bersarang
+      function HomePage() {
+        return (
+          <div>
+            {/* Nesting the Header component */}
+            <Header />
+            <Body />
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(app);
+      root.render(<HomePage />);
+    </script>
+  </body>
+</html>
+
+<!-- 
+Summary
+Komponen adalah blok penyusun utama dalam React, memungkinkan kita untuk membangun UI yang modular dan dapat digunakan kembali.
+Komponen dapat bersarang, artinya satu komponen dapat berisi komponen lainnya untuk membentuk struktur yang lebih kompleks.
+Menggunakan konvensi huruf kapital pada nama komponen sangat penting agar React dapat membedakan antara elemen HTML dan komponen React.
+React Fragment (<>...</>) berguna untuk menghindari <div> tambahan yang tidak diperlukan dalam markup HTML.
+Pendekatan ini membantu membuat kode lebih bersih, lebih terstruktur, dan lebih mudah dikelola dalam proyek React.
+-->

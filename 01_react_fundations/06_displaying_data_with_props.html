@@ -1,0 +1,114 @@
+<!-- 
+Sejauh ini, jika anda menggunakan kembali komponen <Header/> anda, maka akan menampilkan konten yang sama kedua kali
+Bagaimana jika ingin menampilkan teks yang berbeda, atau tidak mengetahui isi teks sesungguhnya karena data berasal dari sumber eksternal?
+
+Elemen HTML biasa memiliki atribut yang dapat Anda gunakan untuk meneruskan informasi yang mengubah perilaku elemen tersebut. Misalnya, mengubah 
+src atribut suatu <img> elemen akan mengubah gambar yang ditampilkan, href atribut suatu <a> tag akan mengubah tujuan tautan. Dengan cara yang 
+sama, Anda dapat meneruskan potongan informasi sebagai properti ke komponen React. Ini disebut props.
+
+Mirip dengan fungsi JavaScript, Anda dapat mendesain komponen yang menerima argumen kustom (atau properti) yang mengubah perilaku komponen atau 
+apa yang tampak saat komponen tersebut ditampilkan di layar. Kemudian, Anda dapat meneruskan properti ini dari komponen induk ke komponen anak.
+
+    Catatan: Dalam React, data mengalir ke bawah pohon komponen. Ini disebut aliran data satu arah . State, yang akan dibahas di bab berikutnya, 
+    dapat diteruskan dari komponen induk ke komponen anak sebagai properti.
+
+-->
+
+<html>
+  <body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- <script type="text/javascript"> -->
+    <script type="text/jsx">
+      const app = document.getElementById("app");
+
+      // membuat komponen yang dapat menerima props dan menampilkan (sebuah object dengan notasi titik)
+      function Header(props) {
+        return <h1>{props.title}.</h1>;
+      }
+
+      // object destructuring
+      function Body({ paragraph }) {
+        return <p>{paragraph}</p>;
+      }
+
+      // returned value of a function
+      function createFooter(footer) {
+        if (footer) {
+          return footer;
+        } else {
+          return "Default Footer";
+        }
+      }
+      function Footer({ textFoot }) {
+        return <h3>{createFooter(textFoot)}</h3>;
+      }
+
+      // ternary operator
+      function Button({ textBtn }) {
+        return <button>{textBtn ? textBtn : "Default Button"}</button>;
+      }
+
+      // nested component
+      function Card(props) {
+        return (
+          <>
+            <Header title={props.title} />
+            <Body paragraph={props.paragraph} />
+            <Button textBtn={props.textBtn} />
+            <Footer textFoot={props.textFoot} />
+          </>
+        );
+      }
+
+      // membuat parent komponen yang meneruskan props ke child
+      function HomePage() {
+        return (
+          <div>
+            <Header title="Hello Header Component" />
+            <Body paragraph="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla illo amet libero modi itaque blanditiis atque! Quisquam, neque sapiente!" />
+            <Button textBtn="" />
+            <Footer textFoot="" />
+
+            <Card
+              title="Other Title"
+              paragraph="Other paragraph"
+              textBtn="Other Button"
+              textFoot="Other Footer"
+            />
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(app);
+      root.render(<HomePage />);
+    </script>
+  </body>
+</html>
+
+<!-- 
+Terdapat banyak cara dan gaya menggunakan props, karena props termasuk objek, kita bisa melakukan 
+  - object destructuring (contoh Header) 
+  - atau hanya menampilkan properti di objek dengan notasi titik (contoh Body)
+  - template literal, contoh
+    function Header({ title }) {
+      return <h1>{`Cool ${title}`}</h1>;
+    }
+  - nilai yang dikembalikan fungsi (contoh Footer)
+  - ternary operator (contoh Button)
+
+-->
+
+<!-- 
+Summary
+Props memungkinkan komponen menjadi lebih fleksibel dengan menerima data dari komponen induk.
+Ada berbagai cara untuk menggunakan props, termasuk destructuring, template literals, ternary operator, dan fungsi pengembalian nilai.
+Props bersifat satu arah (data hanya mengalir dari induk ke anak).
+Menetapkan nilai default untuk props dapat membantu menghindari nilai kosong atau undefined.
+React Fragment (<>...</>) dapat digunakan untuk menghindari elemen <div> tambahan.
+Pendekatan ini membantu membuat kode lebih modular, mudah dipahami, dan lebih terorganisir dalam proyek React.
+-->
