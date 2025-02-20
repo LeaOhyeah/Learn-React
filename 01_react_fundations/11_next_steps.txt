@@ -1,0 +1,15 @@
+### Langkah Berikutnya ###
+
+Selamat telah membuat aplikasi Next.js pertama Anda!
+Singkatnya, Anda telah mempelajari pengetahuan dasar untuk React dan Next.js, dan bermigrasi dari Aplikasi React sederhana ke aplikasi Next.js.
+
+### Apa berikutnya? ###
+
+Terus belajar React
+Selama bertahun-tahun, banyak kursus, video, dan artikel telah dibuat untuk membantu pengembang mempelajari React. Meskipun sulit untuk 
+merekomendasikan sumber daya yang sesuai dengan gaya belajar Anda, salah satu referensi yang sangat berharga adalah Dokumentasi React yang 
+berisi kotak pasir interaktif untuk membantu Anda berlatih topik tersebut. 
+https://react.dev/learn
+
+Pelajari Next.js dengan membangun aplikasi dasbor
+https://nextjs.org/learn/dashboard-app
