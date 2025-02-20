@@ -1,0 +1,69 @@
+Untuk memahami cara kerja Komponen Server dan Klien, ada baiknya untuk memahami dua konsep dasar web
+    Lingkungan / environments tempat kode aplikasi Anda dapat dieksekusi: server dan klien.
+    Batasan jaringan / network boundary yang memisahkan kode server dan klien.
+
+
+### Lingkungan / environments ###
+1. Klien mengacu pada browser pada perangkat pengguna yang mengirimkan permintaan ke server untuk kode aplikasi Anda. Kemudian, respons yang 
+diterima dari server diubah menjadi antarmuka yang dapat digunakan pengguna untuk berinteraksi .
+
+2. Server mengacu pada komputer di pusat data yang menyimpan kode aplikasi Anda, menerima permintaan dari klien, melakukan beberapa perhitungan, 
+dan mengirimkan kembali respons yang sesuai .
+
+Setiap lingkungan memiliki serangkaian kemampuan dan batasannya sendiri. Misalnya, dengan memindahkan proses rendering dan pengambilan data ke 
+server, Anda dapat mengurangi jumlah kode yang dikirim ke klien, yang dapat meningkatkan performa aplikasi Anda. Namun, seperti yang Anda 
+pelajari sebelumnya, untuk membuat UI Anda interaktif, Anda perlu memperbarui DOM pada klien.
+
+Oleh karena itu, kode yang Anda tulis untuk server dan klien tidak selalu sama. Operasi tertentu (misalnya pengambilan data atau pengelolaan 
+status pengguna) lebih cocok untuk satu lingkungan daripada yang lain.
+
+
+### Batasan jaringan / network ###
+Batas Jaringan adalah garis konseptual yang memisahkan berbagai lingkungan.
+
+Di React, Anda memilih tempat untuk menempatkan batas jaringan di pohon komponen Anda. Misalnya, Anda dapat mengambil data dan merender posting 
+pengguna di server (menggunakan Komponen Server), lalu merender interaktif LikeButton untuk setiap posting di klien (menggunakan Komponen Klien).
+
+
+Di balik layar, komponen-komponen dibagi menjadi dua grafik modul. Grafik modul server (atau pohon) berisi semua Komponen Server yang 
+ditampilkan di server, dan grafik modul klien (atau pohon) berisi semua Komponen Klien.
+Setelah Komponen Server dirender, format data khusus yang disebut React Server Component Payload (RSC) dikirim ke klien. Muatan RSC berisi:
+    1. Hasil render dari Komponen Server.
+    2. Placeholder (atau lubang) untuk tempat Komponen Klien harus dirender dan referensi ke berkas JavaScript-nya.
+React menggunakan informasi ini untuk menggabungkan Komponen Server dan Klien serta memperbarui DOM pada klien.
+Mari kita lihat cara kerjanya.
+
+
+### Menggunakan Komponen Klien ###
+Seperti yang Anda pelajari di bab terakhir, Next.js menggunakan Komponen Server secara default - ini untuk meningkatkan kinerja aplikasi Anda 
+dan berarti Anda tidak perlu mengambil langkah tambahan untuk mengadopsinya.
+
+Melihat kembali kesalahan pada peramban Anda, Next.js memperingatkan Anda bahwa Anda mencoba masuk useStateke dalam Komponen Server. Anda dapat 
+memperbaikinya dengan memindahkan tombol "Like" interaktif ke Komponen Klien.
+
+lihat file /app/like-button.jsx dan komentar page.jsx
+
+untuk membuat LikeButton Komponen Klien, tambahkan 'use client' perintah React di bagian atas berkas. Perintah ini memberi tahu React untuk 
+merender komponen pada klien. Lalu impor LikeButton komponen ke page.jsx
+    import LikeButton from './like-button';
+     return (
+        <div>
+            <Header title="Develop. Preview. Ship." />
+            /...
+            <LikeButton />
+        </div>
+    );
+
+
+Summary
+Sebagai rekapitulasi, Anda telah mempelajari tentang lingkungan server dan klien serta kapan harus menggunakan masing-masing. Anda juga 
+mempelajari bahwa Next.js menggunakan Komponen Server React secara default untuk meningkatkan kinerja, dan bagaimana Anda dapat menyertakan 
+Komponen Klien pada bagian yang lebih kecil dari UI interaktif Anda.
+
+Bacaan Tambahan
+Masih banyak lagi yang perlu dipelajari tentang Komponen Server dan Klien. Berikut ini beberapa sumber daya tambahan:
+    Server Components Docs: https://nextjs.org/docs/app/building-your-application/rendering/server-components
+    Client Component Docs: https://nextjs.org/docs/app/building-your-application/rendering/client-components
+    Composition Patterns: https://nextjs.org/docs/app/building-your-application/rendering/composition-patterns
+    The "use client" Directive: https://react.dev/reference/rsc/use-client
+    The "use server" Directive: https://react.dev/reference/rsc/use-server
