@@ -1,0 +1,63 @@
+### Membuat proyek baru ###
+Kami merekomendasikan penggunaan pnpm sebagai pengelola paket Anda, karena lebih cepat dan lebih efisien daripada npmatau yarn. Jika Anda belum 
+menginstalnya, Anda dapat menginstalnya secara global dengan menjalankan:
+    npm install -g pnpm
+
+Untuk membuat aplikasi Next.js, buka terminal Anda, ke dalam folder tempat Anda ingin menyimpan proyek Anda, dan jalankan perintah berikut:
+    npx create-next-app@latest nextjs-dashboard --example "https://github.com/vercel/next-learn/tree/main/dashboard/starter-example" --use-pnpm
+Perintah ini menggunakan create-next-app, alat Antarmuka Baris Perintah (CLI) yang menyiapkan aplikasi Next.js untuk Anda. Pada perintah di 
+atas, Anda juga menggunakan --example "repo github" dengan contoh awal untuk kursus ini.
+
+
+### Menjelajahi proyek ###
+Tidak seperti tutorial yang mengharuskan Anda menulis kode dari awal, sebagian besar kode untuk kursus ini sudah ditulis untuk Anda. Hal ini 
+lebih mencerminkan pengembangan di dunia nyata, di mana Anda kemungkinan akan bekerja dengan basis kode yang sudah ada. Tujuan kami adalah 
+membantu Anda fokus mempelajari fitur-fitur utama Next.js, tanpa harus menulis semua kode aplikasi. Setelah instalasi, buka proyek di editor 
+kode Anda dan navigasikan ke nextjs-dashboard.
+
+Mari luangkan waktu untuk menjelajahi proyek ini.
+Anda akan melihat bahwa proyek tersebut memiliki struktur folder berikut:
+/app
+    /lib
+    /ui
+/public
+next.config.ts
+...
+
+- /app: Berisi semua rute, komponen, dan logika untuk aplikasi Anda. Di sinilah sebagian besar Anda akan bekerja.
+- /app/lib: Berisi fungsi yang digunakan dalam aplikasi Anda, seperti fungsi utilitas yang dapat digunakan kembali dan fungsi pengambilan data.
+- /app/ui: Berisi semua komponen UI untuk aplikasi Anda, seperti card, tabel, dan form. Untuk menghemat waktu, kami telah menyiapkan nya.
+- /public: Berisi semua aset statis untuk aplikasi Anda, seperti gambar.
+- File Konfigurasi : Anda juga akan melihat file konfigurasi seperti next.config.tsdi root aplikasi Anda. Sebagian besar file ini dibuat dan 
+dikonfigurasi sebelumnya saat Anda memulai proyek baru menggunakan create-next-app. Anda tidak perlu mengubahnya dalam kursus ini.
+
+Silakan menjelajahi folder-folder ini, dan jangan khawatir jika Anda belum memahami semua hal yang dilakukan kode tersebut.
+
+
+### Placeholder data ###
+Saat Anda membuat antarmuka pengguna, ada baiknya untuk memiliki beberapa data pengganti. Jika database atau API belum tersedia, Anda dapat:
+    Gunakan data placeholder dalam format JSON atau sebagai objek JavaScript.
+    Gunakan layanan pihak ketiga seperti mockAPI.
+Untuk proyek ini, kami telah menyediakan beberapa data placeholder dalam app/lib/placeholder-data.ts. Setiap objek JavaScript dalam file 
+tersebut mewakili tabel dalam database Anda.
+
+
+### TypeScript ###
+Anda mungkin juga melihat sebagian besar berkas memiliki akhiran .tsatau .tsx. Ini karena proyek tersebut ditulis dalam TypeScript. Kami ingin 
+membuat kursus yang mencerminkan lanskap web modern. Tidak apa-apa jika Anda tidak memahami TypeScript - kami akan memberikan potongan kode 
+TypeScript bila diperlukan. Untuk saat ini, lihatlah /app/lib/definitions.tsberkas tersebut. Di sini, kami secara manual menentukan jenis-jenis 
+yang akan dikembalikan dari basis data. Misalnya, tabel faktur memiliki jenis-jenis berikut:
+
+Dengan menggunakan TypeScript, Anda dapat memastikan Anda tidak sengaja meneruskan format data yang salah ke komponen atau basis data Anda, ]
+seperti meneruskan string alih-alih number ke invoice amount.
+
+
+### Menjalankan server pengembangan ###
+Jalankan pnpm i untuk menginstal paket proyek.
+    pnpm i
+
+Diikuti dengan pnpm dev untuk memulai server pengembangan.
+    pnpm dev
+
+pnpm devmemulai server pengembangan Next.js Anda pada port 3000. Mari kita periksa apakah server tersebut berfungsi.
+Buka http://localhost:3000 pada peramban Anda. Halaman beranda Anda akan terlihat, yang sengaja tidak diberi gaya:

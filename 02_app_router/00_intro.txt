@@ -1,0 +1,34 @@
+### App Router ###
+Selamat datang di kursus Next.js Foundations! Dalam kursus interaktif gratis ini, Anda akan mempelajari fitur-fitur utama Next.js dengan 
+membangun aplikasi web full-stack.
+Untuk kursus ini, kita akan membangun dasbor keuangan yang memiliki:
+    Halaman beranda publik.
+    Halaman login.
+    Halaman dasbor yang dilindungi oleh autentikasi.
+    Kemampuan bagi pengguna untuk menambah, mengedit, dan menghapus faktur.
+Dasbor juga akan dilengkapi dengan basis data, yang akan Anda siapkan di bab berikutnya .
+
+
+### Ringkasan ###
+Berikut ikhtisar fitur yang akan Anda pelajari dalam kursus ini:
+    Penataan : Berbagai cara untuk menata aplikasi Anda di Next.js.
+    Optimasi : Cara mengoptimalkan gambar, tautan, dan font.
+    Perutean : Cara membuat tata letak dan halaman bersarang menggunakan perutean sistem berkas.
+    Pengambilan Data : Cara menyiapkan database Postgres di Vercel, dan praktik terbaik untuk pengambilan dan streaming.
+    Pencarian dan Paginasi : Cara mengimplementasikan pencarian dan paginasi menggunakan parameter pencarian URL.
+    Mutasi Data: Cara melakukan mutasi data menggunakan React Server Actions, dan memvalidasi ulang cache Next.js.
+    Penanganan Kesalahan: Cara menangani kesalahan umum dan 404kesalahan yang tidak ditemukan.
+    Validasi Formulir dan Aksesibilitas: Cara melakukan validasi formulir sisi server dan kiat untuk meningkatkan aksesibilitas.
+    Otentikasi : Cara menambahkan otentikasi ke aplikasi Anda menggunakanNextAuth.js dan Middleware.
+    Metadata : Cara menambahkan metadata dan mempersiapkan aplikasi Anda untuk berbagi sosial.
+
+
+### Pengetahuan prasyarat ###
+Kursus ini mengasumsikan Anda memiliki pemahaman dasar tentang React (semua yang ada di /01_react_fundations sudah cukup) dan JavaScript. 
+
+
+### Persyaratan sistem ###
+Sebelum Anda memulai kursus ini, pastikan sistem Anda memenuhi persyaratan berikut:
+    Node.js 18.18.0 atau yang lebih baru sudah terpasang.
+    Sistem operasi: macOS, Windows (termasuk WSL), atau Linux.
+    Selain itu, Anda juga memerlukan Akun GitHub dan Akun Vercel.
