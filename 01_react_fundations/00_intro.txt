@@ -1,0 +1,19 @@
+### Fondasi React ###
+Untuk mempelajari Next.js secara efektif, ada baiknya Anda memahami JavaScript, React, dan konsep pengembangan web terkait. Namun, JavaScript 
+dan React adalah topik yang luas. Bagaimana Anda tahu kapan Anda siap untuk mulai menggunakan Next.js?
+
+Selamat datang di kursus React Foundations! Kursus yang mudah diikuti bagi pemula ini akan memandu Anda melalui pengetahuan prasyarat untuk 
+Next.js. Anda akan membangun proyek sederhana selangkah demi selangkah; dimulai dengan aplikasi JS, lalu memigrasikannya ke React dan Next.js.
+
+Setiap bagian dibangun berdasarkan bagian sebelumnya, jadi Anda dapat memilih di mana untuk memulai tergantung pada apa yang sudah Anda ketahui.
+
+
+### Pengetahuan prasyarat ###
+Tutorial ini mengasumsikan pengetahuan tentang HTML, CSS, JavaScript, dan tidak memiliki pengetahuan tentang React
+
+
+### Persyaratan sistem ###
+Sebelum Anda memulai kursus ini, pastikan Anda telah menginstal yang berikut ini:
+    Node.js 20.12.0 atau yang lebih baru terpasang.
+    Sistem operasi: macOS, Windows (termasuk WSL), atau Linux.
+    VSCode atau editor teks lain pilihan Anda
