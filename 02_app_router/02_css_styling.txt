@@ -1,0 +1,56 @@
+Saat ini, beranda Anda belum memiliki gaya apa pun. Mari kita lihat berbagai cara untuk memberi gaya pada aplikasi Next.js Anda.
+Berikut adalah topik yang akan kami bahas
+    Cara menambahkan berkas CSS global ke aplikasi Anda.
+    Dua cara penataan gaya yang berbeda: Tailwind dan modul CSS.
+    Cara menambahkan nama kelas secara kondisional dengan clsxpaket utilitas.
+
+
+### Cara menambahkan berkas CSS global ke aplikasi Anda ### 
+    Jika Anda melihat ke dalam /app/ui, Anda akan melihat berkas bernama global.css. Anda dapat menggunakan berkas ini untuk menambahkan aturan 
+    CSS ke semua rute dalam aplikasi Anda - seperti aturan pengaturan ulang CSS, gaya di seluruh situs untuk elemen HTML seperti tautan, dan 
+    banyak lagi. Anda dapat mengimpor global.css ke komponen apa pun ke dalam aplikasi Anda, tetapi biasanya merupakan praktik yang baik    
+    untuk menambahkannya ke komponen tingkat atas. Di Next.js, ini adalah tata letak akar (lebih lanjut tentang ini nanti).
+
+    Tambahkan gaya global ke aplikasi Anda dengan menavigasi /app/layout.tsx dan mengimpor global.css file
+    import '@/app/ui/global.css';
+
+    Halaman beranda Anda sekarang memiliki styling, tapi tunggu sebentar, Anda tidak menambahkan aturan CSS apa pun, dari mana gaya tersebut 
+    berasal? Jika Anda melihat ke dalam /app/ui/global.css, Anda akan melihat beberapa @tailwind directives:
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+
+
+### Dua cara penataan gaya yang berbeda: Tailwind dan modul CSS ### 
+Tailwind 
+    Tailwind adalah kerangka kerja CSS yang mempercepat proses pengembangan dengan memungkinkan Anda menulis kelas utilitas dengan cepat
+    langsung dalam kode React Anda. Di Tailwind, Anda menata elemen dengan menambahkan nama kelas. Misalnya, menambahkan nama kelas 
+    "text-blue-500"akan mengubah <h1>teks menjadi biru:
+        <h1 className="text-blue-500">I'm blue!</h1>
+
+    Saat Anda akan memulai proyek baru dengan create-next-app, Next.js akan menanyakan apakah Anda ingin menggunakan Tailwind. Jika Anda memilih 
+    yes, Next.js akan secara otomatis menginstal paket yang diperlukan dan mengonfigurasi Tailwind di aplikasi Anda.
+    Jika Anda melihat /app/page.tsx, Anda akan melihat bahwa kami menggunakan kelas Tailwind dalam contoh tersebut.
+
+Modul CSS
+    Modul CSS memungkinkan Anda untuk menentukan lingkup CSS ke suatu komponen dengan secara otomatis membuat nama kelas yang unik, sehingga 
+    Anda tidak perlu khawatir lagi dengan benturan gaya. Kami akan terus menggunakan Tailwind dalam kursus ini, tetapi mari luangkan waktu 
+    sejenak untuk melihat bagaimana Anda dapat memperoleh hasil yang sama dari kuis di atas menggunakan modul CSS.
+    Di dalam /app/ui, buat file baru bernama home.module.css dan tambahkan aturan CSS (lihat file)
+
+### Cara menambahkan nama kelas secara kondisional dengan clsx paket utilitas ### 
+Using the clsx library to toggle class names
+    Mungkin ada kasus di mana Anda perlu memberi gaya kondisional pada elemen berdasarkan status atau kondisi lainnya.
+    clsx adalah pustaka yang memudahkan Anda mengganti nama kelas. Kami sarankan untuk melihat dokumentasi untuk lebih jelasnya,
+    https://github.com/lukeed/clsx berikut adalah penggunaan dasarnya:
+    
+    Misalkan Anda ingin membuat komponen InvoiceStatus yang menerima status. Statusnya bisa berupa 'pending'atau 'paid'.
+    Jika 'paid', Anda ingin warnanya hijau. Jika 'pending', Anda ingin warnanya abu-abu.
+    className={clsx(
+        'inline-flex items-center rounded-full px-2 py-1 text-sm',
+        {
+          'bg-gray-100 text-gray-500': status === 'pending',
+          'bg-green-500 text-white': status === 'paid',
+        },
+      )}
+    // contoh ada di `status.tsx` dan `pagination.tsx`
