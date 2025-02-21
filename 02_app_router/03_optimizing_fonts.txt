@@ -1,0 +1,44 @@
+Mengoptimalkan Font dan Gambar
+Pada bab sebelumnya, Anda telah mempelajari cara memberi gaya pada aplikasi Next.js Anda. Mari lanjutkan mengerjakan beranda Anda dengan 
+menambahkan font khusus dan gambar hero.
+Berikut adalah topik yang akan kami bahas
+    Cara menambahkan font khusus dengan next/font.
+    Cara menambahkan gambar dengan next/image.
+    Bagaimana font dan gambar dioptimalkan di Next.js.
+
+### Mengapa mengoptimalkan font? ###
+    Font memainkan peran penting dalam desain situs web, tetapi penggunaan font khusus dalam proyek Anda dapat memengaruhi kinerja jika file 
+    font perlu diambil dan dimuat.
+
+    Pergeseran Tata Letak Kumulatif adalah metrik yang digunakan oleh Google untuk mengevaluasi performa dan pengalaman pengguna situs web. 
+    Dengan font, pergeseran tata letak terjadi saat browser awalnya merender teks dalam font fallback atau sistem lalu menukarnya dengan font 
+    kustom setelah dimuat. Pertukaran ini dapat menyebabkan ukuran teks, spasi, atau tata letak berubah, menggeser elemen di sekitarnya.
+
+    Next.js secara otomatis mengoptimalkan font dalam aplikasi saat Anda menggunakan next/fontmodul tersebut. Modul ini mengunduh file font pada 
+    waktu pembuatan dan menyimpannya bersama aset statis Anda yang lain. Ini berarti saat pengguna mengunjungi aplikasi Anda, tidak ada 
+    permintaan jaringan tambahan untuk font yang akan memengaruhi kinerja.
+
+
+### Menambahkan font utama ###
+    Mari tambahkan font Google khusus ke aplikasi Anda untuk melihat cara kerjanya.
+    Di /app/uifolder Anda, buat file baru bernama fonts.ts. Anda akan menggunakan file ini untuk menyimpan font yang akan digunakan di seluruh 
+    aplikasi Anda. Impor Interfont dari modul next/font/googl - ini akan menjadi font utama Anda. Kemudian, tentukan subset apa
+    yang ingin Anda muat. Dalam kasus ini, 'latin':
+        import { Inter } from 'next/font/google';
+        export const inter = Inter({ subsets: ['latin'] });
+
+    Terakhir, tambahkan font ke <body>elemen di /app/layout.tsx:
+        import { inter } from '@/app/ui/fonts';
+        <body className={`${inter.className} antialiased`}>{children}</body>
+        
+    Dengan menambahkan Interelemen <body>, font akan diterapkan di seluruh aplikasi Anda. Di sini, Anda juga menambahkan Tailwind antialiased 
+    kelas yang menghaluskan font. Kelas ini tidak wajib digunakan, tetapi akan memberikan sentuhan yang bagus. Buka browser Anda, buka dev 
+    tools, dan pilih body elemen. Anda akan melihat Inter dan Inter_Fallback sekarang diterapkan di bawah gaya.
+
+
+### Latihan: Menambahkan font sekunder ###
+    Anda juga dapat menambahkan font ke elemen tertentu di aplikasi Anda. Sekarang giliran Anda! Di fonts.ts Anda, impor font sekunder bernama 
+    Lusitana dan teruskan ke <p>elemen di /app/page.tsx Anda. Selain menentukan subset seperti yang Anda lakukan sebelumnya, Anda juga harus menentukan ketebalan font yang berbeda . Misalnya, 400(normal) dan 700(tebal).
+    // lihat page.tsx dan fonts.ts yang berkaitan dengan Lusitana
+    Terakhir, <AcmeLogo /> komponen tersebut juga menggunakan Lusitana. Itu dikomentari untuk mencegah kesalahan, Anda sekarang dapat menghapus 
+    komentarnya:

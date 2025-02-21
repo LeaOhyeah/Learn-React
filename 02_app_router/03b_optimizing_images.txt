@@ -1,0 +1,44 @@
+### Mengapa mengoptimalkan gambar? ###
+    Next.js dapat menyajikan aset statis, seperti gambar, di bawah folder tingkat atas /public. File di dalamnya /public dapat dirujuk dalam 
+    aplikasi Anda. Dengan HTML biasa, Anda akan menambahkan gambar dengan tag img. Namun, ini berarti Anda harus secara manual:
+    - Pastikan gambar Anda responsif pada berbagai ukuran layar.
+    - Tentukan ukuran gambar untuk perangkat yang berbeda.
+    - Cegah pergeseran tata letak saat gambar dimuat.
+    - Memuat gambar secara lambat yang berada di luar area pandang pengguna.
+Pengoptimalan Gambar merupakan topik besar dalam pengembangan web yang dapat dianggap sebagai spesialisasi tersendiri. Daripada menerapkan 
+pengoptimalan ini secara manual, Anda dapat menggunakan komponen next/image untuk mengoptimalkan gambar secara otomatis.
+
+
+### Komponen<Image>​ ###
+Komponen ini <Image> merupakan ekstensi dari <img> tag HTML, dan dilengkapi dengan pengoptimalan gambar otomatis, seperti:
+    - Mencegah pergeseran tata letak secara otomatis saat gambar sedang dimuat.
+    - Mengubah ukuran gambar untuk menghindari pengiriman gambar besar ke perangkat dengan area pandang yang lebih kecil.
+    - Memuat gambar secara lambat secara default (gambar dimuat saat memasuki viewport).
+    - Menyajikan gambar dalam format modern, seperti WebP dan AVIF, jika browser mendukungnya.
+
+
+### Menambahkan gambar hero desktop ###
+    Mari kita gunakan <Image> komponen tersebut. Jika Anda melihat ke dalam /public, Anda akan melihat ada dua gambar: hero-desktop.png dan 
+    hero-mobile.png. Kedua gambar ini benar-benar berbeda, dan akan ditampilkan tergantung pada apakah perangkat pengguna adalah desktop atau 
+    seluler. Di /app/page.tsx Anda, impor komponen dari next/image. Lalu, tambahkan gambar di bawah komentar:
+    // lihat page.tsx
+    Di sini, Anda menyetel piksel width ke 1000 dan height ke 760. Sebaiknya tetapkan widthdan heightgambar Anda untuk menghindari pergeseran 
+    tata letak, rasio aspeknya harus identik dengan gambar sumber. Nilai ini bukan ukuran gambar yang dirender, melainkan ukuran file gambar 
+    sebenarnya yang digunakan untuk memahami rasio aspek.
+
+    Anda juga akan melihat kelas hiddenuntuk menghapus gambar dari DOM di layar ponsel, dan md:blockmenampilkan gambar di layar desktop.
+
+
+### Latihan: Menambahkan gambar hero seluler ###
+    Sekarang giliran Anda! Di bawah gambar yang baru saja Anda tambahkan, tambahkan <Image>komponen lain untuk hero-mobile.png.
+    Gambar harus memiliki jumlah piksel sebanyak width 560 height 620
+    Seharusnya ditampilkan di layar ponsel, dan disembunyikan di desktop - Anda dapat menggunakan alat pengembangan untuk memeriksa apakah 
+    gambar desktop dan seluler ditukar dengan benar.
+    // lihat page.tsx
+    <Image
+        src="/hero-mobile.png"
+        width={560}
+        height={620}
+        className="block md:hidden"
+        alt="Screenshot of the dashboard project showing mobile version"
+    />
