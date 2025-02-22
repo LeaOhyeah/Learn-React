@@ -1,0 +1,67 @@
+Membuat Tata Letak dan Halaman
+Sejauh ini, aplikasi Anda hanya memiliki halaman beranda. Mari pelajari cara membuat lebih banyak rute dengan tata letak dan halaman.
+Berikut adalah topik yang akan kami bahas
+    Buat routing dashboard menggunakan file-system routing.
+    Pahami peran folder dan file saat membuat segmen rute baru.
+    Buat tata letak bersarang yang dapat dibagikan antara beberapa halaman dasbor.
+    Pahami apa itu colocation, partial rendering, dan root layout.
+
+
+Rute bersarang
+    Next.js menggunakan perutean sistem berkas / file-system routing tempat folder digunakan untuk membuat rute bertingkat. Setiap folder 
+    mewakili segmen rute yang memetakan ke segmen URL.
+    misla file path /app/dashboard/invoices maka url path domain/dashboard/invoices
+
+    Anda dapat membuat UI terpisah untuk setiap rute menggunakan file layout.tsx dan page.tsx. 
+    Page.tsx adalah file Next.js khusus yang mengekspor komponen React, dan diperlukan agar rute dapat diakses. Dalam aplikasi Anda, Anda 
+    sudah memiliki file halaman: /app/page.tsx- ini adalah halaman beranda yang terkait dengan rute /.
+
+    Untuk membuat rute bertingkat, Anda dapat menumpuk folder di dalam folder lainnya dan menambahkan page.tsxfile di dalamnya. Misalnya:
+    file path /app/dashboard/page.tsx untuk /dashboard dan /app/page.tsx untuk /
+
+
+Membuat halaman dashboard
+    Buat folder baru bernama dashboard di dalam /app. Lalu, buat file baru page.tsx di dalam /app/dashboard:
+    lihat file /app/dashboard/page.tsx, lalu kunjungi localhost:port_anda/dashboard.
+    Beginilah cara Anda membuat berbagai halaman di Next.js: buat segmen rute baru menggunakan folder, dan tambahkan page.tsx di dalamnya.
+
+Dengan memiliki nama khusus untuk page, Next.js memungkinkan Anda untuk menempatkan komponen UI, file pengujian, dan kode terkait lainnya 
+bersama rute Anda. Hanya konten di dalam file page yang dapat diakses publik. 
+
+
+Praktik: Membuat halaman dasbor
+    Mari berlatih membuat lebih banyak rute. Di dasbor Anda, buat dua halaman lagi:
+    1. Halaman Pelanggan : Halaman harus dapat diakses di http://localhost:3000/dashboard/customers
+    Untuk saat ini, ia harus mengembalikan sebuah <p>Customers Page</p> elemen.
+
+    2. Halaman Faktur : Halaman faktur dapat diakses di http://localhost:3000/dashboard/invoices
+    Untuk saat ini, kembalikan juga suatu <p>Invoices Page</p> elemen.
+
+Luangkan waktu untuk mengerjakan latihan ini
+
+
+Membuat tata letak dasbor
+    Dasbor memiliki semacam navigasi yang dibagikan ke beberapa halaman. Di Next.js, Anda dapat menggunakan layout.tsx file khusus 
+    untuk membuat UI yang dibagikan ke beberapa halaman. Mari buat tata letak untuk halaman dasbor!Di dalam /dashboard, 
+    tambahkan file baru bernama layout.tsx dan buat komponen layout yang akan dibagikan ke komponen customers dan invoices
+
+    Periksa apakah semuanya berfungsi dengan benar dengan menyimpan perubahan dan memeriksa localhost Anda. Salah satu manfaat 
+    menggunakan tata letak di Next.js adalah bahwa pada navigasi, hanya komponen halaman yang diperbarui sementara tata letak tidak akan 
+    dirender ulang. Ini disebut rendering parsial yang mempertahankan status React sisi klien dalam tata letak saat beralih antar halaman.
+
+Root layout
+    Pada Bab optimizing fonts dan images, Anda mengimpor Inter font ke tata letak lain: /app/layout.tsx
+    Ini disebut tata letak root dan diperlukan dalam setiap aplikasi Next.js. Setiap UI yang Anda tambahkan ke tata letak root akan 
+    dibagikan ke semua halaman dalam aplikasi Anda. Anda dapat menggunakan tata letak root untuk mengubah tag <html>dan <body>, serta 
+    menambahkan metadata (Anda akan mempelajari lebih lanjut tentang metadata di bab berikutnya ).
+
+
+Summary
+-   File-system routing di Next.js menggunakan struktur folder untuk menentukan rute halaman.
+Contoh:
+    /app/page.tsx → localhost:3000/
+    /app/dashboard/page.tsx → localhost:3000/dashboard
+    /app/dashboard/invoices/page.tsx → localhost:3000/dashboard/invoices
+-   Tata letak dasbor (Shared Layout), tambahkan layout.tsx di dalam /app/dashboard untuk berbagi UI antar halaman dalam dasbor.
+-   Root Layout (/app/layout.tsx), semua halaman Next.js menggunakan tata letak root. Bisa digunakan untuk mengatur <html>, <body>, font 
+    global, dan metadata.
