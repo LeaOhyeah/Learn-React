@@ -1,0 +1,44 @@
+Pada bab sebelumnya, Anda telah membuat tata letak dan halaman dasbor. Sekarang, mari tambahkan beberapa tautan untuk memungkinkan 
+pengguna menavigasi di antara rute dasbor.
+
+Berikut adalah topik yang akan kami bahas
+    Cara menggunakan next/link komponen.
+    Cara menampilkan tautan aktif dengan usePathname().
+    Cara kerja navigasi di Next.js.
+
+
+Mengapa mengoptimalkan navigasi?
+    Untuk menghubungkan antar halaman, Anda biasanya menggunakan <a>. Saat ini, tautan sidebar menggunakan elemen <a>, tetapi perhatikan 
+    apa yang terjadi saat Anda menavigasi antara halaman beranda, faktur, dan pelanggan di browser Anda. Apakah Anda melihatnya?
+    Ada penyegaran halaman penuh pada setiap navigasi halaman!
+
+
+Komponen<Link>​
+    Di Next.js, Anda dapat menggunakan <Link /> Komponen untuk menghubungkan antar halaman di aplikasi Anda. <Link> memungkinkan Anda 
+    melakukan navigasi sisi klien dengan JavaScript. Untuk menggunakan <Link /> tersebut, buka /app/ui/dashboard/nav-links.tsx, dan impor 
+    Link komponen dari next/link. Kemudian, ganti <a> tag dengan <Link>:
+    Link komponennya mirip dengan penggunaan <a>tag, tetapi alih-alih <a href="…">, Anda menggunakan <Link href="…">.
+
+
+Automatic code-splitting and prefetching / Pemisahan kode dan prapengambilan otomatis
+    Untuk meningkatkan pengalaman navigasi, Next.js secara otomatis membagi kode aplikasi Anda berdasarkan segmen rute. Hal ini berbeda dari React SPA tradisional, di mana peramban memuat semua kode aplikasi Anda saat halaman pertama kali dimuat.
+
+    Memisahkan kode berdasarkan rute berarti halaman-halaman menjadi terisolasi. Jika halaman tertentu menampilkan kesalahan, aplikasi 
+    lainnya akan tetap berfungsi. Ini juga berarti lebih sedikit kode yang harus diurai oleh browser, yang membuat aplikasi lebih cepat.
+
+    Lebih jauh lagi, dalam produksi, setiap kali <Link>komponen muncul di viewport browser, Next.js secara otomatis mengambil kode untuk 
+    rute yang ditautkan di latar belakang. Pada saat pengguna mengklik tautan, kode untuk halaman tujuan akan dimuat di latar belakang, 
+    dan inilah yang membuat transisi halaman berlangsung hampir seketika!
+
+
+Pattern: Menampilkan tautan aktif
+    Pola UI yang umum adalah menampilkan tautan aktif untuk menunjukkan kepada pengguna halaman mana yang sedang mereka kunjungi. Untuk 
+    melakukannya, Anda perlu mendapatkan jalur pengguna saat ini dari URL. Next.js menyediakan hook yang disebut usePathname() yang dapat Anda gunakan untuk memeriksa jalur dan menerapkan pola ini.
+
+    Sejak usePathname() adalah React hook, Anda harus mengubah nav-links.tsx menjadi Komponen Klien. Tambahkan perintah React "use 
+    client"ke bagian atas file, lalu impor usePathname() dari next/navigation:
+
+    Berikutnya, tetapkan jalur ke variabel yang disebut pathname di dalam komponen Anda <NavLinks />:
+
+    Anda dapat menggunakan clsx yang diperkenalkan dalam bab tentang gaya CSS untuk menerapkan nama kelas secara kondisional saat tautan 
+    aktif. Jika link.href cocok dengan pathname, tautan akan ditampilkan dengan teks biru dan latar belakang biru muda.
