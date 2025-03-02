@@ -1,0 +1,52 @@
+Menyiapkan Basis Data Anda
+Sebelum Anda dapat melanjutkan bekerja pada dasbor Anda, Anda memerlukan beberapa data. Dalam bab ini, Anda akan menyiapkan database 
+PostgreSQL dari salah satu integrasi Vercel. Jika Anda sudah familier dengan PostgreSQL dan lebih suka menggunakan penyedia basis data 
+Anda sendiri, Anda dapat melewati bab ini dan mengaturnya sendiri. Jika tidak, mari kita lanjutkan!
+
+Berikut adalah topik yang akan kami bahas
+    Push proyek Anda ke GitHub.
+    Siapkan akun Vercel dan tautkan repo GitHub Anda untuk pratinjau dan penerapan instan.
+    Buat dan tautkan proyek Anda ke database Postgres.
+    Isi database dengan data awal.
+
+
+Buat akun Vercel
+    Kunjungi vercel.com/signup untuk membuat akun. Pilih paket "hobi" gratis. Pilih Lanjutkan dengan GitHub untuk menghubungkan akun 
+    GitHub dan Vercel Anda.
+
+
+Hubungkan dan terapkan proyek Anda
+    Berikutnya, Anda akan dibawa ke layar ini di mana Anda dapat memilih dan mengimpor repositori GitHub yang baru saja Anda buat:
+    Dengan menghubungkan repositori GitHub Anda, setiap kali Anda mengirim perubahan ke main branch ,Vercel akan secara otomatis redeploy 
+    aplikasi Anda tanpa memerlukan konfigurasi. Saat opening pull requests, Anda juga akan memiliki URL pratinjau instan yang 
+    memungkinkan mendeteksi kesalahan penerapan lebih awal dan berbagi pratinjau proyek dengan anggota tim untuk mendapatkan umpan balik.
+
+
+Membuat database Postgres
+    Selanjutnya, untuk menyiapkan basis data, klik Lanjutkan ke Dasbor dan pilih tab Penyimpanan dari dasbor proyek Anda. Pilih Buat 
+    Basis Data . Bergantung pada kapan akun Vercel Anda dibuat, Anda mungkin melihat opsi seperti Neon atau Supabase. Pilih penyedia yang 
+    Anda inginkan dan klik Lanjutkan .
+
+    Pilih wilayah dan paket penyimpanan Anda, jika diperlukan. Wilayah default untuk semua proyek Vercel adalah Washington DC (iad1) , 
+    dan kami sarankan memilih ini jika tersedia untuk mengurangi latensi untuk permintaan data.
+
+    Setelah terhubung, navigasikan ke .env.local, klik Show secret and Copy Snippet. Pastikan Anda reveal the secrets sebelum menyalinnya.
+    Buka editor kode Anda dan ganti nama .env.example menjadi .env. Tempelkan konten yang disalin dari Vercel.
+
+    Penting: Buka .gitignore dan pastikan .env tersebut ada di berkas yang diabaikan guna mencegah rahasia basis data Anda terekspos.
+
+
+Seed your database
+    Sekarang basis data Anda sudah tercipta, mari kita isi dengan beberapa data awal. Kami telah menyertakan API yang dapat Anda akses di 
+    peramban, yang akan menjalankan skrip awal untuk mengisi basis data dengan kumpulan data awal. Skrip ini menggunakan SQL untuk 
+    membuat tabel, dan data dari placeholder-data.tsfile untuk mengisinya setelah dibuat.
+
+    Pastikan server pengembangan lokal Anda berjalan dengan pnpm run dev dan navigasikan ke localhost:3000/seed
+    di peramban Anda. Setelah selesai, Anda akan melihat pesan "Database berhasil disemai" di peramban. Setelah selesai, Anda dapat 
+    menghapus berkas ini.
+
+
+Menjalankan kueri
+    Mari kita jalankan query untuk memastikan semuanya berjalan sesuai harapan. Kita akan menggunakan Router Handler lain, app/query/route.ts, 
+    untuk meng-query database. Di dalam file ini, Anda akan menemukan listInvoices()fungsi yang memiliki query SQL.
+    Hapus komentar pada file, hapus Response.json() block, dan navigasikan kelocalhost:3000/query di browser Anda. 
