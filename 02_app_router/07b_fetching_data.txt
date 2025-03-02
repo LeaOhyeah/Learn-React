@@ -1,0 +1,49 @@
+Fetching data untuk <RevenueChart/>     
+    Untuk mengambil data untuk komponen <RevenueChart/>, impor fungsi fetchRevenue dari data.ts dan panggil di dalam komponen Anda:
+
+    Sejutnya, mari kita lakukan hal berikut:
+        Hapus komentar pada <RevenueChart/>komponen tersebut.
+        Navigasi ke berkas komponen ( /app/ui/dashboard/revenue-chart.tsx) dan hapus komentar pada kode di dalamnya.
+        Periksa localhost:3000dan Anda akan melihat bagan yang menggunakan revenuedata.
+
+
+Fetching data untuk <LatestInvoices/>     
+    Untuk komponen <LatestInvoices /> tersebut, kita perlu mendapatkan 5 faktur terbaru, diurutkan berdasarkan tanggal.
+
+    Anda dapat mengambil semua faktur dan menyortirnya menggunakan JavaScript. Ini bukan masalah karena data kita kecil, tetapi seiring 
+    berkembangnya aplikasi Anda, jumlah data yang ditransfer pada setiap permintaan dan JavaScript yang diperlukan untuk menyortirnya dapat 
+    meningkat secara signifikan.
+
+    Alih-alih menyortir faktur terbaru dalam memori, Anda dapat menggunakan kueri SQL untuk mengambil hanya 5 faktur terakhir. Misalnya, berikut 
+    kueri SQL dari data.ts Anda:
+
+    Di halaman Anda, impor fungsi fetchLatestInvoices:
+    Kemudian, hapus komentar pada <LatestInvoices /> tersebut. Anda juga perlu menghapus komentar pada kode yang relevan di dalam 
+    <LatestInvoices /> itu sendiri, yang terletak di /app/ui/dashboard/latest-invoices.
+
+    Jika Anda mengunjungi localhost, Anda akan melihat bahwa hanya 5 yang terakhir yang dikembalikan dari database. Semoga, Anda mulai melihat 
+    keuntungan dari melakukan query langsung ke database Anda!
+
+
+Namun... ada dua hal yang perlu Anda ketahui:
+
+    1. Permintaan data secara tidak sengaja memblokir satu sama lain, sehingga menciptakan permintaan waterfall .
+    2. Secara default, Next.js melakukan prarender rute untuk meningkatkan kinerja, ini disebut Rendering Statis . Jadi jika data Anda 
+    berubah, perubahan tersebut tidak akan terlihat di dasbor Anda.
+
+Mari kita bahas nomor 1 di bab ini, lalu lihat lebih detail nomor 2 di bab berikutnya.
+
+What are request waterfalls? Apa itu air terjun permintaan?
+    "Waterfall" mengacu pada serangkaian permintaan jaringan yang bergantung pada penyelesaian permintaan sebelumnya. Dalam kasus 
+    pengambilan data, setiap permintaan hanya dapat dimulai setelah permintaan sebelumnya telah mengembalikan data.
+
+Parallel data fetching, Pengambilan data paralel
+    Cara umum untuk menghindari waterfall adalah dengan memulai semua permintaan data di saat yang sama - secara paralel.
+    Dalam JavaScript, Anda dapat menggunakan fungsi Promise.all() atau Promise.allSettled() untuk memulai semua janji pada saat yang bersamaan. Misalnya, dalam data.ts, kita menggunakan Promise.all()fungsi fetchCardData():
+
+    Dengan menggunakan pola ini, Anda dapat:
+        - Mulai jalankan semua pengambilan data secara bersamaan, yang lebih cepat daripada menunggu setiap permintaan selesai dalam bentuk 
+        waterfall.
+        - Gunakan pola JavaScript asli yang dapat diterapkan ke pustaka atau kerangka kerja apa pun.
+    Namun, ada satu kelemahan jika hanya mengandalkan pola JavaScript ini: apa yang terjadi jika satu permintaan data lebih lambat daripada 
+    yang lainnya? Mari kita cari tahu lebih lanjut di bab berikutnya.
