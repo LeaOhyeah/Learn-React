@@ -1,0 +1,59 @@
+Sekarang, setelah Anda membuat dan mengisi basis data, mari bahas berbagai cara untuk mengambil data bagi aplikasi Anda, dan membangun 
+halaman dasbor Anda.
+
+Berikut adalah topik yang akan kami bahas
+    Pelajari beberapa pendekatan untuk mengambil data: API, ORM, SQL, dll.
+    Bagaimana Komponen Server dapat membantu Anda mengakses sumber daya back-end dengan lebih aman.
+    Apa itu network waterfalls.
+    Cara menerapkan pengambilan data paralel menggunakan Pola JavaScript.
+
+
+Memilih cara mengambil data
+API Layer
+    API merupakan lapisan perantara antara kode aplikasi dan basis data Anda. Ada beberapa kasus yang memungkinkan Anda menggunakan API:
+    - Jika Anda menggunakan layanan pihak ketiga yang menyediakan API.
+    - Jika Anda mengambil data dari klien, Anda ingin memiliki lapisan API yang berjalan di server untuk menghindari terungkapnya rahasia basis 
+    data Anda kepada klien.
+    Di Next.js, Anda dapat membuat titik akhir API menggunakan Route Handlers .
+
+Kueri basis data
+    Saat Anda membuat aplikasi fullstack, Anda juga perlu menulis logika untuk berinteraksi dengan basis data Anda. Untuk basis data relasional
+    seperti Postgres, Anda dapat melakukan ini dengan SQL atau dengan ORM. Ada beberapa kasus di mana Anda harus menulis kueri basis data:
+    - Saat membuat API endpoints, Anda perlu menulis logika untuk berinteraksi dengan basis data Anda.
+    - Jika Anda menggunakan Komponen Server React (mengambil data di server), Anda dapat melewati API layer, dan menjalankan kueri langsung ke 
+    database Anda tanpa risiko mengungkap rahasia database Anda ke klien.
+
+
+Mari pelajari lebih lanjut tentang Komponen React Server.
+Menggunakan Komponen Server untuk mengambil data
+
+Secara default, aplikasi Next.js menggunakan React Server Components. Mengambil data dengan Server Components merupakan pendekatan yang relatif 
+baru dan ada beberapa manfaat dalam menggunakannya:
+    - Komponen Server mendukung JavaScript Promises, yang menyediakan solusi untuk tugas asinkron seperti pengambilan data secara native. Anda 
+    dapat menggunakan async/awaitsintaks tanpa memerlukan useEffect, useStateatau pustaka pengambilan data lainnya.
+    - Komponen Server berjalan di server, jadi Anda dapat menyimpan pengambilan data dan logika yang mahal di server, hanya mengirimkan hasilnya 
+    ke klien.
+    - Karena Komponen Server berjalan di server, Anda dapat meminta data langsung ke database tanpa lapisan API tambahan. Ini menghemat waktu Anda untuk menulis dan memelihara kode tambahan.
+
+
+Menggunakan SQL
+Untuk aplikasi dasbor Anda, Anda akan menulis kueri basis data menggunakan library postgres.js dan SQL. Ada beberapa alasan mengapa kita akan 
+menggunakan SQL:
+    - SQL merupakan standar industri untuk melakukan kueri pada basis data relasional (misalnya ORM yang menghasilkan SQL secara tersembunyi).
+    - Memiliki pemahaman dasar tentang SQL dapat membantu Anda memahami dasar-dasar basis data relasional, sehingga memungkinkan Anda menerapkan 
+    pengetahuan Anda ke alat lain.
+    - SQL bersifat serbaguna, memungkinkan Anda untuk mengambil dan memanipulasi data tertentu.
+    - Library postgres.js menyediakan perlindungan terhadap injeksi SQL.
+Jangan khawatir jika Anda belum pernah menggunakan SQL sebelumnya - kami telah menyediakan kueri tersebut untuk Anda.
+Buka /app/lib/data.ts. Di sini Anda akan melihat bahwa kami menggunakan postgres. Fungsi sql memungkinkan Anda untuk melakukan query pada 
+database Anda
+
+
+Mengambil data untuk halaman dasbor.
+Sekarang setelah Anda memahami berbagai cara mengambil data, mari kita ambil data untuk halaman ikhtisar dasbor. 
+Navigasi ke /app/dashboard/page.tsx, tempel kode berikut, dan luangkan waktu untuk mempelajarinya:
+    *lihat /app/dashboard/page.tsx
+Kode sengaja dikomentari. Sekarang kita akan mulai memberi contoh pada masing-masing bagian.
+    Ini pageadalah komponen server async . Ini memungkinkan Anda menggunakan await untuk mengambil data.
+    - Ada juga 3 komponen yang menerima data: <Card>, <RevenueChart>, dan <LatestInvoices>. Saat ini komponen-komponen tersebut masih dikomentari 
+    dan belum diimplementasikan.
